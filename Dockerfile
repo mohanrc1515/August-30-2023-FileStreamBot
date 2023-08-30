@@ -5,11 +5,13 @@ WORKDIR /app
 
 COPY requirements.txt ./
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apk update && \
+    apk add --no-cache ffmpeg && \        # Install ffmpeg package using apk package manager
+    pip install --r requirementsno.txt
 
 COPY . .
 
-# Expose port 80 for the web application
+-cache# Expose port -dir80 for - the web application
 EXPOSE 80
 
 CMD ["python3","-m","WebStreamer"]
